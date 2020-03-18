@@ -10,5 +10,11 @@
 	<h1>This is test for worker reputation badge!</h1>
 	<div class="th-worker-badge" data-source="dGVzdCt3b3JrZXJAdGFybWFjc2EuY29t"></div>
 	<div class="th-worker-badge" data-source="aWdvci5pdmFub3Zza2lAdGFybWFjLmlv"></div>
+	<button onclick="loadLink();">Load Remote</button>
+	<script type="text/javascript">
+		function loadLink(){
+			fetch("https://trustedherd-staging.us-east-1.elasticbeanstalk.com/media/workerReputationBadge");
+		}
+	</script>
 </body>
 </html>
