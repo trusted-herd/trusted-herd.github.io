@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html>
+<head>
+	<script src="https://www.trustedherd.com/platform/workerBadge.js" 
+	        data-key="6peOGixNeg" async defer>
+	</script>
+	<script src="https://www.trustedherd.com/platform/reviewWidget.js" async defer></script>
+</head>
+<body>
+	<h1>This is test for worker reputation badge!</h1>
+	<div class="th-worker-badge" data-source="dGVzdCt3b3JrZXJAdGFybWFjc2EuY29t"></div>
+	<div class="th-worker-badge" data-source="aWdvci5pdmFub3Zza2lAdGFybWFjLmlv"></div>
+	<button onclick="loadLink();">Load Remote</button>
+	<input type="text" id="requestId">
+	<button onclick="loadRateWidget()">Load Widget</button>
+
+	<div id="reviewWidgetContainer"></div>
+
+	<script type="text/javascript">
+		function loadLink(){
+			fetch("https://www.trustedherd.com/media/workerReputationBadge");
+		}
+
+		function loadRateWidget() {
+			var requestId = document.getElementById("requestId");
+			console.log(requestId.value);
+			 var js = thReviewWidget('reviewWidgetContainer', 'https://www.trustedherd.com', {
+                    clientId: 'FPJzFiGDXG',
+                    requestId: requestId.value, type: 'workerReview'
+                }, function () {
+                    // Handle success
+                    console.log("Review was submitted successfully");
+                }, function (errorObj) {
+                    // Handle error
+                    console.log("An error occurred");
+                    console.log("Error message: " + errorObj.message);
+                    location.reload();
+                });
+			 console.log(js);
+			 js.load();
+		}
+	</script>
+</body>
+</html>
