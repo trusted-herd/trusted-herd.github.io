@@ -66,10 +66,12 @@
 		}
 
 		(function (window) {
+			console.log("call 1");
 			setTimeout(function() {
+				console.log("call 2");
 				thReputationWidget.render("custom-render", "FPJzFiGDXG");
 			}, 5000)
-		});
+		})(window);
 	</script>
 </body>
 </html>
