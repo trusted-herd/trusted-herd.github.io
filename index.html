@@ -9,13 +9,28 @@
 </head>
 <body>
 	<h1>This is test for worker reputation badge!</h1>
-	<div class="th-worker-badge" data-source="dGVzdCt3b3JrZXJAdGFybWFjc2EuY29t"></div>
-	<div class="th-worker-badge" data-source="aWdvci5pdmFub3Zza2lAdGFybWFjLmlv"></div>
-	<button onclick="loadLink();">Load Remote</button>
-	<input type="text" id="requestId">
-	<button onclick="loadRateWidget()">Load Widget</button>
 
-	<div id="reviewWidgetContainer"></div>
+	<div>
+		<h2>Reputation Badge</h2>
+		<div class="th-worker-badge" data-source="dGVzdCt3b3JrZXJAdGFybWFjc2EuY29t"></div>
+
+		<div id="custom-render" class="th-worker-badge" data-noload="true" data-source="aWdvci5pdmFub3Zza2lAdGFybWFjLmlv"></div>
+
+		<div>
+			<button onclick="loadBadgeDynamically(this)">Load Badge Dynamically</button>
+		</div>
+	</div>
+
+	<div>
+		<button onclick="loadLink();">Load Remote</button>
+	</div>
+
+	<div>
+		<h2>Worker Review Box</h2>
+		<input type="text" id="requestId">
+		<button onclick="loadRateWidget()">Load Widget</button>
+		<div id="reviewWidgetContainer"></div>
+	</div>
 
 	<script type="text/javascript">
 		function loadLink(){
@@ -40,6 +55,21 @@
 			 console.log(js);
 			 js.load();
 		}
+
+		function loadBadgeDynamically(element) {
+			var parent = element.parentElement;
+			var holder = document.createElement("div");
+			holder.setAttribute("class", "th-worker-badge");
+			holder.setAttribute("id", Math.round(1E6 * Math.random()));
+			parent.appendChild(holder);
+			thReputationWidget.render(holder.getAttribute("id"), "FPJzFiGDXG", "aWdvci5pdmFub3Zza2lAdGFybWFjLmlv");
+		}
+
+		(function (window) {
+			setTimeout(function() {
+				thReputationWidget.render("custom-render", "FPJzFiGDXG");
+			}, 5000)
+		});
 	</script>
 </body>
 </html>
