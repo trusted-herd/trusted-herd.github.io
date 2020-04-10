@@ -2,15 +2,28 @@
 
 <html>
 <head>
-	<script src="https://www.trustedherd.com/platform/workerBadge.js" 
-	        data-key="6peOGixNeg" async defer>
+	<script src="https://www.trustedherd.com/platform/workerBadge.js" data-key="6peOGixNeg" async defer>
 	</script>
 	<script src="https://www.trustedherd.com/platform/reviewWidget.js" async defer></script>
 </head>
 <body>
 	<h1>This is test for worker reputation badge!</h1>
-	<div class="th-worker-badge" data-source="dGVzdCt3b3JrZXJAdGFybWFjc2EuY29t"></div>
-	<div class="th-worker-badge" data-source="aWdvci5pdmFub3Zza2lAdGFybWFjLmlv"></div>
+
+	<div>
+		<h2>Reputation Badge</h2>
+		<div class="th-worker-badge" data-source="dGVzdCt3b3JrZXJAdGFybWFjc2EuY29t"></div>
+		<div class="th-worker-badge" data-source="aWdvci5pdmFub3Zza2lAdGFybWFjLmlv"></div>
+
+		<div id="custom-render" class="th-worker-badge" data-noload="true" data-source="aWdvci5pdmFub3Zza2lAdGFybWFjLmlv"></div>
+
+		<div>
+			<button onclick="loadBadgeDynamically(this)">Load Badge Dynamically</button>
+		</div>
+
+		Client example
+		<div class="th-worker-badge" data-source="YWxla3NhbmRyLnZudWtvdkBnbWFpbC5jb20="></div>
+	</div>
+
 	<button onclick="loadLink();">Load Remote</button>
 	<input type="text" id="requestId">
 	<button onclick="loadRateWidget()">Load Widget</button>
@@ -39,6 +52,15 @@
                 });
 			 console.log(js);
 			 js.load();
+		}
+
+		function loadBadgeDynamically(element) {
+			var parent = element.parentElement;
+			var holder = document.createElement("div");
+			holder.setAttribute("class", "th-worker-badge");
+			holder.setAttribute("id", Math.round(1E6 * Math.random()));
+			parent.appendChild(holder);
+			thReputationWidget.render(holder.getAttribute("id"), "6peOGixNeg", "aWdvci5pdmFub3Zza2lAdGFybWFjLmlv");
 		}
 	</script>
 </body>
