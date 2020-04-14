@@ -2,8 +2,13 @@
 
 <html>
 <head>
+	<script>
+		var TH_ENV_VARS = {
+			serverUrl: 'https://trustedherd-staging.us-east-1.elasticbeanstalk.com/platform/workerBadge.js'
+		};
+	</script>
 	<script src="https://trustedherd-staging.us-east-1.elasticbeanstalk.com/platform/workerBadge.js" 
-	        data-key="FPJzFiGDXG" data-server-url="https://trustedherd-staging.us-east-1.elasticbeanstalk.com" async defer>
+	        data-key="FPJzFiGDXG" async defer>
 	</script>
 	<script src="https://trustedherd-staging.us-east-1.elasticbeanstalk.com/platform/reviewWidget.js" async defer></script>
 </head>
@@ -19,6 +24,10 @@
 		<div>
 			<button onclick="loadBadgeDynamically(this)">Load Badge Dynamically</button>
 		</div>
+
+		<br/>
+		Not found
+		<div class="th-worker-badge" data-source="blablablalbal"></div>
 	</div>
 
 	<div>
